@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LUCAS GABRIEL BARBERSHOP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue:wght@400;600;700&family=Inter:wght@400;500;600&display=swap">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font:16px/1.55 Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+.look-input{position:absolute;opacity:0;pointer-events:none}
+#look-0:checked ~ .site{--bg:#0f0e0c;--surface:#1b1916;--text:#f4efe6;--muted:#a59c8e;--primary:#c89d5c;--on-primary:#ffffff;--line:#2c2823}#look-1:checked ~ .site{--bg:#f6f3ee;--surface:#ffffff;--text:#17140f;--muted:#6b6358;--primary:#b8862f;--on-primary:#ffffff;--line:#e6dfd3}#look-2:checked ~ .site{--bg:#13233f;--surface:#1b3157;--text:#ffffff;--muted:#c3cde0;--primary:#e5484d;--on-primary:#ffffff;--line:#29406b}
+.site{background:var(--bg);color:var(--text);min-height:100vh;transition:background .3s,color .3s}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+.display{font-family:'Bebas Neue',Impact,sans-serif;letter-spacing:-.01em;line-height:1.05}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600}
+.mark{width:34px;height:34px;border-radius:10px;display:grid;place-items:center;background:var(--primary);color:var(--on-primary)}
+.mark svg,.ic svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--primary);color:var(--on-primary);font-weight:600;text-decoration:none;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--line)}
+.hero{padding:56px 0 64px}
+.hero.with-photo{display:grid;gap:36px;grid-template-columns:1.15fr .85fr;align-items:center}
+.hero-photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:24px;border:1px solid var(--line);display:block}
+.gallery{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.gallery img{width:100%;aspect-ratio:1;object-fit:cover;border-radius:16px;display:block}
+.menu{display:flex;gap:4px;align-items:center;flex-wrap:wrap}
+.menu a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:8px 10px;border-radius:999px}
+.menu a:hover{color:var(--text);background:var(--surface)}
+.page{display:none}
+.page:target,.pages:not(:has(.page:target)) .home{display:block}
+.page-head{padding:56px 0 28px}
+.page-head h1{font-size:clamp(36px,7vw,64px);margin:12px 0 10px}
+.page-head p{color:var(--muted);max-width:56ch}
+.blocks{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.rows{display:grid;gap:10px}
+.row-item{display:flex;justify-content:space-between;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+.row-item b{font-weight:600}
+.row-item span{color:var(--muted);text-align:right}
+.eyebrow{font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--primary);font-weight:600}
+.hero h1{font-size:clamp(44px,9vw,92px);margin:14px 0 12px}
+.hero .tag{font-size:clamp(20px,3.2vw,28px);font-weight:600;max-width:24ch}
+.hero p{color:var(--muted);max-width:52ch;margin-top:14px}
+.hero .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:clamp(28px,5vw,44px);margin-bottom:22px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:20px}
+.card b{display:block;font-size:17px;margin:12px 0 4px}
+.card p{color:var(--muted);font-size:15px}
+.ic{width:36px;height:36px;border-radius:12px;display:grid;place-items:center;background:color-mix(in srgb,var(--primary) 14%,transparent);color:var(--primary)}
+.why{counter-reset:w}
+.why .card b:before{counter-increment:w;content:counter(w,decimal-leading-zero) " ";color:var(--primary)}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:600}
+details p{color:var(--muted);margin-top:8px}
+.contact{display:grid;gap:18px;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));align-items:center}
+.contact ul{list-style:none;display:grid;gap:8px;color:var(--muted)}
+.ph{border-bottom:1px dashed currentColor;opacity:.75}
+footer{padding:28px 0 90px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+.looks{position:fixed;left:50%;bottom:16px;transform:translateX(-50%);display:flex;gap:6px;align-items:center;padding:6px 8px;border-radius:999px;background:rgba(17,17,17,.82);color:#fff;font:12px Inter,system-ui,sans-serif;z-index:5}
+.looks label{width:22px;height:22px;border-radius:50%;cursor:pointer;border:2px solid rgba(255,255,255,.6)}
+.looks label[for=look-0]{background:#c89d5c}#look-0:checked ~ .site .looks label[for=look-0]{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.35)}.looks label[for=look-1]{background:#b8862f}#look-1:checked ~ .site .looks label[for=look-1]{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.35)}.looks label[for=look-2]{background:#e5484d}#look-2:checked ~ .site .looks label[for=look-2]{border-color:#fff;box-shadow:0 0 0 2px rgba(255,255,255,.35)}
+@media (max-width:640px){.hero{padding:36px 0 44px}section{padding:44px 0}.nav .btn{display:none}.nav{flex-wrap:wrap}.menu{order:3;width:100%;flex-wrap:nowrap;overflow-x:auto}.hero.with-photo{grid-template-columns:1fr}.hero-photo{aspect-ratio:4/3}}
+</style>
+</head>
+<body>
+<input class="look-input" type="radio" name="look" id="look-0" checked><input class="look-input" type="radio" name="look" id="look-1"><input class="look-input" type="radio" name="look" id="look-2">
+<div class="site">
+<div class="wrap">
+<nav class="nav"><a class="brand" href="#home" style="color:inherit;text-decoration:none"><span class="mark"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7a3 3 0 1 0 0-.01M6 17a3 3 0 1 0 0-.01M8.6 8.6 20 20M8.6 15.4 20 4"/></svg></span>LUCAS GABRIEL BARBERSHOP</a><a class="btn" href="#contact">Agendar meu horário</a></nav>
+</div>
+<div class="pages">
+<main class="page home" id="home">
+<div class="wrap">
+<header class="hero">
+<div>
+<div class="eyebrow">barber shop · Natal</div>
+<h1 class="display">LUCAS GABRIEL BARBERSHOP</h1>
+<div class="tag">Corte de cabelo e barba com atendimento dedicado</div>
+<p>Ambiente acolhedor para cuidar do seu visual no dia a dia. Cortes modernos e tradicionais feitos com atenção a cada detalhe.</p>
+<div class="row"><a class="btn" href="#contact">Agendar meu horário</a><a class="btn ghost" href="#services">Serviços</a></div>
+</div>
+</header>
+</div>
+<section id="services"><div class="wrap"><h2 class="display">Serviços</h2><div class="grid">
+<div class="card"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7a3 3 0 1 0 0-.01M6 17a3 3 0 1 0 0-.01M8.6 8.6 20 20M8.6 15.4 20 4"/></svg></span><b>Corte Masculino</b><p>Corte tesoura ou máquina ajustado ao seu estilo.</p></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7a3 3 0 1 0 0-.01M6 17a3 3 0 1 0 0-.01M8.6 8.6 20 20M8.6 15.4 20 4"/></svg></span><b>Barba Completa</b><p>Modelagem e alinhamento de barba com acabamento preciso.</p></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7a3 3 0 1 0 0-.01M6 17a3 3 0 1 0 0-.01M8.6 8.6 20 20M8.6 15.4 20 4"/></svg></span><b>Acabamento e Pezinho</b><p>Manutenção rápida dos contornos do cabelo e da barba.</p></div><div class="card"><span class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 7a3 3 0 1 0 0-.01M6 17a3 3 0 1 0 0-.01M8.6 8.6 20 20M8.6 15.4 20 4"/></svg></span><b>Combo Cabelo e Barba</b><p>Cuidado completo para o seu visual em uma única sessão.</p></div>
+</div></div></section>
+<section><div class="wrap why"><h2 class="display">Por que nos escolher</h2><div class="grid">
+<div class="card"><b>Atenção aos detalhes</b><p>Cada corte e barba são executados com calma para garantir um bom resultado.</p></div><div class="card"><b>Ambiente agradável</b><p>Um espaço confortável para você relaxar enquanto renova o visual.</p></div><div class="card"><b>Atendimento prático</b><p>Agende seu horário com facilidade para evitar filas de espera.</p></div>
+</div></div></section>
+<section><div class="wrap"><h2 class="display">FAQ</h2><details><summary>Qual é o valor dos serviços?</summary><p>O corte masculino custa <span class="ph">[Preço]</span> e o serviço de barba fica por <span class="ph">[Preço]</span>.</p></details><details><summary>Preciso agendar horário?</summary><p>Recomendamos o agendamento prévio, mas também atendemos conforme disponibilidade no momento.</p></details><details><summary>Quais são os horários de atendimento?</summary><p>Funcionamos de <span class="ph">[Horário de funcionamento]</span>.</p></details></div></section>
+<section id="contact"><div class="wrap contact"><div><h2 class="display">Fale conosco</h2><p>Venha nos visitar na Barbearia de esquina e garanta seu horário.</p></div>
+<ul><li><span class="ph">[Your phone]</span></li><li><span class="ph">[Your address]</span>, Natal</li><li><span class="ph">[Your opening hours]</span></li><li><a class="btn" href="#contact">Agendar meu horário</a></li></ul>
+</div></section>
+</main>
+</div>
+<footer><div class="wrap">© LUCAS GABRIEL BARBERSHOP · Natal</div></footer>
+<div class="looks" aria-label="Look"><label for="look-0" title="Look 1"></label><label for="look-1" title="Look 2"></label><label for="look-2" title="Look 3"></label></div>
+</div>
+</body>
+</html>
